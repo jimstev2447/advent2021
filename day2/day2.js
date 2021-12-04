@@ -16,10 +16,9 @@ function calculatePositionV2(instructions) {
   let aim = 0;
   instructions.forEach((instruction) => {
     const [newH, newD] = calculatePosition([instruction]);
-    depth += newD;
     horizontal += newH;
     aim += newD;
-    if (newH > 1) depth += aim * newH;
+    if (newH >= 1) depth += aim * newH;
   });
   return [horizontal, depth, aim];
 }
