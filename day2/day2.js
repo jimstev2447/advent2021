@@ -10,4 +10,17 @@ function calculatePosition(instructions) {
 
   return [horizontal, depth];
 }
-module.exports = { calculatePosition };
+function calculatePositionV2(instructions) {
+  let horizontal = 0;
+  let depth = 0;
+  let aim = 0;
+  instructions.forEach((instruction) => {
+    const [newH, newD] = calculatePosition([instruction]);
+    depth += newD;
+    horizontal += newH;
+    aim += newD;
+    if (newH > 1) depth += aim * newH;
+  });
+  return [horizontal, depth, aim];
+}
+module.exports = { calculatePosition, calculatePositionV2 };
