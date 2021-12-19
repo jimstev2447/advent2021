@@ -11,5 +11,8 @@
   "description": "",
   "devDependencies": {
     "jest": "^27.4.3"
+  },
+  "dependencies": {
+    "chalk": "^4.0.0"
   }
 }

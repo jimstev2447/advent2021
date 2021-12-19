@@ -1,3 +1,17 @@
+function mostCommonBinAtIndex(binaries, i) {
+  let count = 0;
+  binaries.forEach((bin) => (count += +bin[i]));
+  return count >= binaries.length / 2 ? "1" : "0";
+}
+
+function findMostCommonAtEachIndex(binaries, cb) {
+  const bitLength = binaries[0].length;
+  for (let i = 0; i < bitLength; i++) {
+    const mostCommon = mostCommonBinAtIndex(binaries, i);
+    cb(mostCommon);
+  }
+}
+
 exports.findGamma = (binaries) => {
   let bin = "";
   findMostCommonAtEachIndex(binaries, (mostCommon) => {
@@ -21,12 +35,6 @@ exports.findPowerConsumption = (data) => {
   return parseInt(gamma, 2) * parseInt(epsilon, 2);
 };
 
-function mostCommonBinAtIndex(binaries, i) {
-  let count = 0;
-  binaries.forEach((bin) => (count += +bin[i]));
-  return count >= binaries.length / 2 ? "1" : "0";
-}
-
 exports.oxygenGenRating = (binaries) => {
   for (let i = 0; i < binaries[0].length; i++) {
     const mostCommon = mostCommonBinAtIndex(binaries, i);
@@ -47,14 +55,6 @@ exports.c02ScrubberRating = (binaries) => {
     binaries = newBinaries;
   }
 };
-
-function findMostCommonAtEachIndex(binaries, cb) {
-  const bitLength = binaries[0].length;
-  for (let i = 0; i < bitLength; i++) {
-    const mostCommon = mostCommonBinAtIndex(binaries, i);
-    cb(mostCommon);
-  }
-}
 
 exports.findLifeSupportRating = (data) => {
   const bins = data.split("\n");
